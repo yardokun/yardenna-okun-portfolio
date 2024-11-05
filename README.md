@@ -1,1 +1,0 @@
-# yardenna-okun-portfolio
