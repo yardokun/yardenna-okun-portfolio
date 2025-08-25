@@ -1,0 +1,11 @@
+/* name pill */
+.heading2-text {
+  display: inline-block;
+  color: var(--name-pill-text);
+  padding: 12px 0px;
+  font-size: 36px;
+  font-weight: 300;
+  font-style: italic;
+  margin: 0 0 var(--space-5);
+  letter-spacing: 1;
+}

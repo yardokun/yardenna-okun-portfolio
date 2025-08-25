@@ -1,0 +1,36 @@
+:root {
+  --bg: #E2E2E2;
+  --surface: #e6e6e6;
+  --text: #1a1a1a;
+  --muted: #5d5d5d;
+  --accent: #a07326;
+  --name-pill-bg: #f3f3f3;
+  --name-pill-text: #4a4327;
+
+  --radius-xl: 999px;
+  --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.08), 0 6px 20px rgba(0, 0, 0, 0.06);
+  --easing: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --duration: 220ms;
+}
+
+/* Dark overrides */
+:root[data-theme="dark"] {
+  --bg: #0f1113;
+  --surface: #171a1d;
+  --text: #e9edf1;
+  --muted: #a3adb7;
+  --name-pill-bg: #1e2226;
+  --name-pill-text: #4a4327;
+}
+
+/* Respect system by default */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1113;
+    --surface: #171a1d;
+    --text: #e9edf1;
+    --muted: #a3adb7;
+    --name-pill-bg: #1e2226;
+    --name-pill-text: #4a4327;
+  }
+}
