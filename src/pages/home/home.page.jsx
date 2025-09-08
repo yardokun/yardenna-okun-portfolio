@@ -22,7 +22,6 @@ export default function Home() {
         <div className="hero__copy">
           <h1 id="intro-title" className="hero__title">
             <span>Hello,</span>
-            <br />
             <span>my name is</span>
           </h1>
 

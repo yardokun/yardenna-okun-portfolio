@@ -4,47 +4,54 @@
 
 /* HERO LAYOUT (mobile first) */
 .hero {
+  --avatar: 140px; /* mobile avatar size */
   max-width: 980px;
   margin: 0 auto;
   padding: var(--space-2) var(--space-5) var(--space-10);
+  /* display: grid; */
+/*  grid-template-columns: 1fr var(--avatar);  text | avatar */
+  /* grid-auto-rows: max-content;
+  column-gap: var(--space-6);
+  row-gap: var(--space-4);
+  align-items: start; */
 }
 
 /* avatar centered near top-right like your mock */
 .hero__media {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: var(--space-2);
-  margin-bottom: var(--space-6);
+  grid-column: 2;
+  grid-row: 1 / span 3; /* image sits alongside title + name + lead */
+  justify-self: end;
+  align-self: start;
+  margin: 0;
 }
 .hero__avatar {
-  width: 160px;
-  height: 160px;
+  width: var(--avatar);
+  height: var(--avatar);
+  max-width: none;
   border-radius: 50%;
   object-fit: cover;
   box-shadow: var(--shadow-soft);
+  display: block;
 }
 
 /* text block */
 .hero__copy {
+/*  grid-column: 1;
+  grid-row: 1;  start under the top edge so the avatar appears slightly above */
   max-width: 560px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
 .hero__title {
-  font-size: 20px;
-  line-height: 1.2;
-  font-weight: 500;
+  font-size: 24px;
+  font-weight: 400;
   letter-spacing: 0.2px;
-  margin: 0 0 var(--space-4);
   display: flex;
   flex-direction: column;
+  gap: 4px;
   align-items: flex-start;
 }
-.hero__title span:first-child {
-  font-weight: 500;
-}
-
 
 /* lead paragraph */
 .hero__lead {
@@ -59,7 +66,7 @@
 .cta {
   display: inline-block;
   padding: 14px 22px;
-  margin: 18px;
+  margin: 18px 0 0 0;
   border-radius: var(--radius-xl);
   border: 2px solid var(--accent);
   text-decoration: none;
@@ -97,18 +104,9 @@
 /* basic desktop enhancement */
 @media (min-width: 768px) {
   .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-    gap: var(--space-8);
-  }
-  .hero__media {
-    order: 2;
-    justify-content: flex-start;
-    margin-top: var(--space-6);
-  }
-  .hero__copy {
-    order: 1;
+    --avatar: 220px; /* larger avatar on wider screens */
+    grid-template-columns: 1fr var(--avatar);
+    column-gap: var(--space-8);
   }
   .hero__title {
     font-size: 34px;

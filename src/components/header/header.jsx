@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.styles.css";
+import SwirlIcon from "../../components/swirl-icon/swirl-icon.jsx";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem("theme");
     if (saved === "light" || saved === "dark") return saved;
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark =
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches;
     return prefersDark ? "dark" : "light"; // only "light" | "dark"
   });
 
@@ -34,19 +37,6 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onEsc);
   }, [open]);
 
-  // Icon bits
-  const Swirl = (props) => (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" {...props}>
-      <path
-        d="M12 3a9 9 0 1 0 9 9c0-1.9-2.1-3.5-4.5-3.5-2.9 0-5.5 2.2-5.5 5
-               0 2 1.6 3.5 3.5 3.5 1.7 0 3-1.2 3-2.7 0-1.3-1-2.3-2.3-2.3"
-        stroke="var(--accent)"
-        strokeWidth="1.6"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-
   return (
     <header className="site-header" role="banner">
       <div className="site-header__inner">
@@ -61,9 +51,18 @@ export default function Header() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          <span className={`hamburger__bar ${open ? "hidden" : ""}`} />
-          <span className={`hamburger__bar ${open ? "hidden" : ""}`} />
-          <span className={`hamburger__bar ${open ? "hidden" : ""}`} />
+          <span
+            id="hamburger__bar_1"
+            className={`hamburger__bar ${open ? "hidden" : ""}`}
+          />
+          <span
+            id="hamburger__bar_2"
+            className={`hamburger__bar ${open ? "hidden" : ""}`}
+          />
+          <span
+            id="hamburger__bar_3"
+            className={`hamburger__bar ${open ? "hidden" : ""}`}
+          />
           <span className={`close ${open ? "show" : ""}`} aria-hidden="true">
             ✕
           </span>
@@ -90,7 +89,9 @@ export default function Header() {
               ref={firstFocusable}
               className="theme-toggle__btn"
               onClick={toggleTheme}
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+              aria-label={`Switch to ${
+                theme === "dark" ? "light" : "dark"
+              } mode`}
               aria-pressed={theme === "dark"}
               title="Toggle theme"
             >
@@ -99,14 +100,26 @@ export default function Header() {
           </div>
 
           <nav className="drawer__nav" aria-label="Mobile">
-            <a href="#about" onClick={() => setOpen(false)} className="drawer__link">
-              <Swirl /> <span>About</span>
+            <a
+              href="#about"
+              onClick={() => setOpen(false)}
+              className="drawer__link"
+            >
+              <SwirlIcon className="swirl-icon" /> <span>About</span>
             </a>
-            <a href="#projects" onClick={() => setOpen(false)} className="drawer__link">
-              <Swirl /> <span>Projects</span>
+            <a
+              href="#projects"
+              onClick={() => setOpen(false)}
+              className="drawer__link"
+            >
+              <SwirlIcon className="swirl-icon" /> <span>Projects</span>
             </a>
-            <a href="#contact" onClick={() => setOpen(false)} className="drawer__link">
-              <Swirl /> <span>Contact</span>
+            <a
+              href="#contact"
+              onClick={() => setOpen(false)}
+              className="drawer__link"
+            >
+              <SwirlIcon className="swirl-icon" /> <span>Contact</span>
             </a>
           </nav>
 
